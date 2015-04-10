@@ -1,0 +1,20 @@
+// Links
+
+a {
+  cursor: pointer;
+  color: $brand-primary;
+  text-decoration: none;
+
+  &:hover {
+    color: darken($brand-primary, 10%);
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: darken($brand-primary, 10%);
+  }
+
+  &:active {
+    color: darken($brand-primary, 10%);
+  }
+}

@@ -1,0 +1,23 @@
+<main>
+	<h1>Round {{vm.$parent.beer.length + 1}}</h1>
+	<form ng-submit="vm.scoreBeer()" novalidate name="scoreBeerForm">
+		<div class="form-row form-row-overlay">
+			<input type="text" id="name" name="name" ng-model="vm.newBeer.name" required value="" aria-labelledby="label-beer-name">
+			<label for="name" id="label-beer-name">Beer name:</label>
+		</div>
+		<div class="form-row form-row-overlay">
+			<textarea id="description" name="description" ng-model="vm.newBeer.description" required aria-labelledby="label-beer-description"></textarea>
+			<label for="description" id="label-beer-description">Description:</label>
+		</div>
+		<fieldset>
+			<legend>Scores</legend>
+			<div class="form-row form-row-range" ng-repeat="person in $parent.vm.people">
+				<label for="score-{{person.id}}">{{person.name}}</label>
+				<input type="range" min="0" max="5" step="0.5" id="score-{{person.id}}" ame="score-{{person.id}}" ng-model="vm.newBeer.scores[person.id]" required><span>{{vm.newBeer.scores[person.id] | number:1}}</span>
+			</div>
+		</fieldset>
+		<div class="form-row">
+			<input type="submit" value="Add beer" ng-disabled="scoreBeerForm.$invalid">
+		</div>
+	</form>
+</main>

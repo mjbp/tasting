@@ -1,0 +1,26 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Gulp Starter</title><link rel="stylesheet" href="app.css"><link rel="short cut icon" href="img/favicon.ico"><script src="app.js"></script></head><body><header class="header container"><h1 class="heading-alpha">Gulp Starter</h1><nav class="nav"><ul><li><a href="https://github.com/helenvholmes/gulp-starter/archive/master.zip">download zip</a></li><li><a href="https://github.com/helenvholmes/gulp-starter">github repo</a></li></ul></nav></header><div class="container"><h1 id="gulp-starter">Gulp Starter</h1>
+<p>A web application starter using <a href="http://gulpjs.com/">Gulp</a>, <a href="https://github.com/sass/node-sass">node-sass</a>, <a href="http://browserify.org/">Browserify</a>, <a href="http://www.browsersync.io/">Browsersync</a>, <a href="https://www.npmjs.com/package/gulp-imagemin">Imagemin</a>, <a href="https://github.com/mikaelbr/gulp-notify">Gulp-notify</a>, <a href="http://jade-lang.com/">Jade</a>, and <a href="https://github.com/substack/watchify">Watchify</a> for super fast builds. Built off of <a href="https://github.com/greypants/gulp-starter">Dan Tello&#39;s Gulp Starter</a> which is really rad.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>First of all, this project assumes you have <a href="http://nodejs.org/">Node</a> installed. If you don&#39;t, install that first.</p>
+<p>If you do have Node installed, navigate to the gulp-starter directory and install your dependencies:</p>
+<pre><code>npm install
+</code></pre><p>Then run the project with:</p>
+<pre><code>gulp
+</code></pre><p>You don&#39;t even have to open your web browser.</p>
+<h2 id="deploy-gh-pages">Deploy/gh-pages</h2>
+<p>You can automatically deploy from your <code>master</code> or feature branches by using the <code>gulp deploy</code> task. This will take whatever is currently in the <code>build/</code> folder and update the <code>gh-pages</code> branch with its contents, with the benefit of not having to swap back and forth between the two. If you run into fast-forwarding issues and need to force push, check the <a href="https://github.kdc.capitalone.com/helenvholmes/gulp-starter/blob/master/gulp/tasks/deploy.js">deploy task comment</a> for a fix.</p>
+<p>It&#39;s not rare to get this error:</p>
+<p><img src="img/deploy-error.png" alt="Terminal fast-forward push error"></p>
+<p>This is a fast-forward error. In essence it&#39;s saying you need to deploy before you can pull. However, in this instance, we recommend a force-push as your <code>gh-pages</code> branch should not be something you track as a team and should be checked locally before pushing. If you get this error, check the <a href="https://github.kdc.capitalone.com/helenvholmes/gulp-starter/blob/master/gulp/tasks/deploy.js">deploy task</a>, line 9 for additional information on how to proceed.</p>
+<h2 id="gulp-tasks">Gulp Tasks</h2>
+<p>The Gulp tasks are each packaged into their specified functionality with <code>config.js</code> setting global variables across the project like directory locations. If you need more functions that aren&#39;t in here consider <a href="https://github.kdc.capitalone.com/helenvholmes/gulp-starter/compare/">contributing back</a>.</p>
+<h2 id="-editorconfig-"><code>.editorconfig</code></h2>
+<p>This project uses an <code>.editorconfig</code>. This allows us to make sure that things like whitespace changes don&#39;t create useless git commits and allows consistency across a larger team of developers. It will apply these changes locally after you close and reload them. You can read about that design choice <a href="https://github.com/sindresorhus/editorconfig-sublime/issues/6#issuecomment-45747035">here</a>.</p>
+<p>If you don&#39;t have a plugin for your editor of choice, you can <a href="http://editorconfig.org/#download">download plugins for EditorConfig from the EditorConfig site</a>.</p>
+<h2 id="why-is-build-not-in-the-gitignore-">Why is <code>build/</code> not in the <code>.gitignore</code>?</h2>
+<p><code>build/</code> is not in the <code>.gitignore</code> because it needs to be tracked in order for the <code>gulp deploy</code> function to work. Annoying, but necessary. If you have suggestions that would make working with this easier consider <a href="https://github.kdc.capitalone.com/helenvholmes/gulp-starter/compare/">contributing back</a>.</p>
+</div><script>var node = document.getElementById('gulp-starter');
+if (node.parentNode) {
+  node.parentNode.removeChild(node);
+}</script><footer class="footer"><p><a href="https://github.kdc.capitalone.com/helenvholmes/gulp-starter">github repo</a><a href="https://github.kdc.capitalone.com/helenvholmes/gulp-starter/archive/master.zip">download zip</a></p></footer></body></html>

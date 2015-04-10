@@ -1,0 +1,18 @@
+.header {
+  @include align-items(center);
+  @include display(flex);
+  @include justify-content(flex-start);
+
+  height: 100px;
+
+  h1 {
+    @include flex(2 1 auto);
+
+    margin: 0.5em 0;
+  }
+
+  @include media($four-col) {
+    @include flex-direction(column);
+    @include align-items(flex-start);
+  }
+}

@@ -1,0 +1,16 @@
+<main>
+	<h1>Tasters</h1>
+	<ol class="list" ng-show="$parent.vm.people.length">
+		<li ng-repeat="person in $parent.vm.people track by $index">{{person.name}} <button ng-click="vm.removePerson(person)"><img src="img/icons/delete.svg" alt="delete" width="16" height="16"></button></li>
+	</ol>
+	<form ng-submit="vm.addPerson()" novalidate name="newPersonForm">
+		<div class="form-row form-row-overlay">
+			<input type="text" id="name" name="name" ng-model="vm.newPerson.name" required value="" aria-labelledby="label-name">
+			<label for="name" id="label-name">Add taster</label>
+		</div>
+		<div class="form-row">
+			<input type="submit" value="Add" ng-disabled="newPersonForm.$invalid">
+		</div>
+	</form>
+	<div class="next-step"><a href="/round" class="button" ng-show="$parent.vm.people.length !== 0">Let's have a beer &rarr;</a></div>
+</main>

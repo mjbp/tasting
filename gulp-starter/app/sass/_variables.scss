@@ -1,0 +1,23 @@
+// Variables
+
+// Note: Variables for grid/breakpoints are stored in _grid_settings.scss.
+// Note: Variables for typography are stored in _typography.scss.
+
+// Colors
+$brand-primary:               #0A61C6;
+
+// Black --- White
+$brand-black:                 lighten(black, 13.5%);
+$brand-gray:                  #F5F5F5; // bg
+$brand-gray-accent:           #D8D8D8;
+$brand-white:                 #ffffff;
+
+$test:                        tomato; // only for testing. e.g., throw on a bg
+
+// Z-Indices 
+$zindex-1:                    1;
+$zindex-2:                    2;
+$zindex-3:                    3;
+$zindex-4:                    4;
+$zindex-5:                    5;
+$zindex-6:                    6;
