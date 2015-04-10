@@ -24,15 +24,15 @@ ul {list-style:none}
 form {background:#fafafa;padding:0 4% .5rem 4%}
 .form-row {display:block;padding-bottom:.5rem;overflow: hidden}
 
-.form-row-overlay {position:relative;padding-top:3rem;}
-.form-row-overlay label {position: absolute;left:0;top:3rem;}
+.form-row-overlay {position:relative;padding-top:2rem;}
+.form-row-overlay label {position: absolute;left:0;top:2rem;}
 .form-row-overlay input:focus + label,
 .form-row-overlay input.ng-valid + label,
 .form-row-overlay textarea:focus + label,
-.form-row-overlay textarea.ng-valid + label {top:1.25rem;font-size:.85rem;transition:all 40ms linear}
+.form-row-overlay textarea.ng-valid + label {top:.5rem;font-size:.85rem;transition:all 40ms linear}
 
 fieldset {border:0 none;background:transparent;margin-top:1rem;}
-legend {font:400 1rem 'Oswald', sans-serif;padding:4px;margin-bottom:1rem}
+legend {font:400 1rem 'Roboto Condensed', sans-serif;padding:4px;margin-bottom:1rem}
 
 label {display:block;font:300 1rem 'Roboto Condensed', sans-serif;padding:4px;margin-bottom:.25rem;cursor:pointer;color:#222}
 
@@ -40,7 +40,7 @@ input:focus,
 textarea:focus {outline: none;}
 input[type='text'],
 textarea,
-select {cursor: pointer;background:transparent;border:0 none;border-bottom:1px solid #ccc;padding:4px;width:100%;background:#fff;font:400 1rem 'Roboto', sans-serif;border-radius:0;}
+select {cursor: pointer;background:transparent;border:0 none;border-bottom:1px solid #ccc;padding:4px;width:100%;background:#fff;font:400 .9rem 'Roboto', sans-serif;border-radius:0;}
 textarea {resize: vertical}
 select {position: relative;cursor: pointer;background: #fff url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAEbgAABG4B0KOyaAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACbSURBVDiN7ZNLDoIwFEXPhTVI2aL8tuPMpbAHQJdDrpNqFCkhYeLAJm9ye87La9rKNkdWdsj+jQaScklXSeVeSVIZnTyzPQMD0EsKO+QA9MBge8Y28SY64A6EZ7YsIESme2ULoAVuQLEiF3Gv/chXwAaY3ptEeQKaLz4xag2MwCnWCNSr7MZ5qyiOQJXitPWUJZ0BbF+SzP8v8ABkhsJhj8L9jwAAAABJRU5ErkJggg==') 99% center no-repeat;-webkit-appearance: none;-webkit-border-radius: 0px;}
 input.ng-valid,
@@ -62,9 +62,9 @@ input[type='submit']:hover,
 input:disabled {opacity:.5;cursor:default}
 input:disabled:hover {box-shadow:none;}
 
-.form-row-range label {width:25%;float:left;}
-.form-row-range input {width:65%;float:left}
-.form-row-range span {display:block;float:left;width:10%;text-align:right;font-family:'Roboto Condensed', sans-serif;}
+.form-row-range label {width:15%;float:left;}
+.form-row-range input {width:75%;float:left;top: .25rem;position: relative;}
+.form-row-range span {display:block;float:left;top: .25rem;position: relative;width:10%;text-align:right;font-family:'Roboto Condensed', sans-serif;}
 
 .form-row-select {display:flex;padding-top:1rem;}
 .form-row-select label {display:inline-flex;padding-right:2rem;}
@@ -88,6 +88,6 @@ td:first-child {padding-left:4%}
 th:last-child,
 td:last-child {padding-right:4%;text-align: right}
 th {padding-bottom:.5rem;text-align: left;}
-td {padding-top:1rem;padding-bottom:1rem;background:#fcfcfc;text-align: left}
-tr:nth-child(even) td {background:#fefefe;}
+td {padding-top:1rem;padding-bottom:1rem;border-top:1px solid #eee;text-align: left}
+tr:nth-child(even) td {}
 

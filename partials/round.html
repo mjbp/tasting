@@ -1,5 +1,5 @@
 <main>
-	<h1>Round {{vm.$parent.beer.length + 1}}</h1>
+	<h1>Round {{$parent.vm.beers.length + 1}}</h1>
 	<form ng-submit="vm.scoreBeer()" novalidate name="scoreBeerForm">
 		<div class="form-row form-row-overlay">
 			<input type="text" id="name" name="name" ng-model="vm.newBeer.name" required value="" aria-labelledby="label-beer-name">
