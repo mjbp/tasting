@@ -1,130 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-/*global require, localStorage*/
-var angular = require('angular');
-
-//Controllers
-function MainController() {
-	var vm = this;
-	vm.people = [];
-	vm.beers = [];
-	vm.save = save;
-	vm.retrieve = retrieve;
-	vm.newSession = newSession;
-	
-	function save() {
-		localStorage.setItem('beerTastingPeople', JSON.stringify(vm.people));
-		localStorage.setItem('beerTastingBeers', JSON.stringify(vm.beers));
-	}
-	
-	function retrieve() {
-		vm.people = JSON.parse(localStorage.getItem('beerTastingPeople')) || [];
-		vm.beers = JSON.parse(localStorage.getItem('beerTastingBeers')) || [];
-	}
-	
-	function newSession() {
-		vm.people = [];
-		vm.beers = [];
-		localStorage.setItem('beerTastingPeople', JSON.stringify(vm.people));
-		localStorage.setItem('beerTastingBeers', JSON.stringify(vm.beers));
-	}
-	
-	vm.retrieve();
-}
-	
-function AddPersonController($scope) {
-	var vm = this;
-	vm.newPerson = {};
-	vm.addPerson = addPerson;
-	vm.removePerson = removePerson;
-
-	function addPerson() {
-		vm.newPerson.id = $scope.$parent.vm.people.length + 1;
-		$scope.$parent.vm.people.push(vm.newPerson);
-		vm.newPerson = {};
-		$scope.$parent.vm.save();
-		$scope.newPersonForm.$setPristine();
-	}
-
-	function removePerson(person) {
-		$scope.$parent.vm.people = $scope.$parent.vm.people.filter(function(a){ return a !== person; });
-		$scope.$parent.vm.save();
-	}
-	
-	//send session as json?
-}
-
-function RoundController($scope, $location) {
-	var vm = this;
-	vm.newBeer = {};
-	vm.scoreBeer = scoreBeer;
-	
-	
-	function scoreBeer() {
-		$scope.$parent.vm.beers.push(vm.newBeer);
-		$scope.$parent.vm.save();
-		$location.path('/scoreboard');
-	}
-}
-
-function ScoreboardController($scope) {
-	var vm = this;
-	vm.updateScoreboard = updateScoreboard;
-	vm.personId = '';
-	
-	function totalBeerScore(scores){
-		var total = 0;
-		if(!!vm.personId) {
-			total = !!scores[vm.personId] ? (scores[vm.personId] * 10) / 10 : 'N/A';
-		} else {
-			for(var score in scores) {
-				total += (scores[score] * 10) / 10;
-			}
-		}
-		return total;
-	}
-	
-	function averageBeerScore(beer) {
-		var numScores = !!vm.personId ? 1 : Object.keys(beer.scores).length;
-		return +(beer.totalScore / numScores).toFixed(2);
-	}
-	
-	function updateScoreboard() {
-		vm.beers = $scope.$parent.vm.beers.map(function(beer){
-			beer.totalScore = totalBeerScore(beer.scores);
-			beer.averageScore = averageBeerScore(beer);
-			return beer;
-		});
-	}
-	updateScoreboard();
-}
-
-
-angular.module('tastingApp', [require('angular-route')])
-
-	.config(function($routeProvider, $locationProvider) {
-			$locationProvider.html5Mode({enabled: true});
-			$routeProvider.
-			  when('/', { 
-				templateUrl: 'partials/addPerson.html',
-				controller: 'AddPersonController',
-				controllerAs: 'vm'}).
-			  when('/round', { 
-				templateUrl: 'partials/round.html',
-				controller: 'RoundController',
-				controllerAs: 'vm'}).
-			  when('/scoreboard', { 
-				templateUrl: 'partials/scoreboard.html',
-				controller: 'ScoreboardController',
-				controllerAs: 'vm'}).
-			  otherwise( { redirectTo: '/' });
-		})
-	.controller('MainController', MainController)
-	.controller('AddPersonController', ['$scope', AddPersonController])
-	.controller('RoundController', ['$scope', '$location', RoundController])
-	.controller('ScoreboardController', ['$scope', ScoreboardController]);
-
-
-},{"angular":5,"angular-route":3}],2:[function(require,module,exports){
 /**
  * @license AngularJS v1.3.15
  * (c) 2010-2014 Google, Inc. http://angularjs.org
@@ -1115,11 +989,11 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 })(window, window.angular);
 
-},{}],3:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 require('./angular-route');
 module.exports = 'ngRoute';
 
-},{"./angular-route":2}],4:[function(require,module,exports){
+},{"./angular-route":1}],3:[function(require,module,exports){
 /**
  * @license AngularJS v1.3.15
  * (c) 2010-2014 Google, Inc. http://angularjs.org
@@ -27429,8 +27303,134 @@ var minlengthDirective = function() {
 })(window, document);
 
 !window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}</style>');
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":4}]},{},[1]);
+},{"./angular":3}],5:[function(require,module,exports){
+/*global require, localStorage*/
+var angular = require('angular');
+
+//Controllers
+function MainController() {
+	var vm = this;
+	vm.people = [];
+	vm.beers = [];
+	vm.save = save;
+	vm.retrieve = retrieve;
+	vm.newSession = newSession;
+	
+	function save() {
+		localStorage.setItem('beerTastingPeople', JSON.stringify(vm.people));
+		localStorage.setItem('beerTastingBeers', JSON.stringify(vm.beers));
+	}
+	
+	function retrieve() {
+		vm.people = JSON.parse(localStorage.getItem('beerTastingPeople')) || [];
+		vm.beers = JSON.parse(localStorage.getItem('beerTastingBeers')) || [];
+	}
+	
+	function newSession() {
+		vm.people = [];
+		vm.beers = [];
+		localStorage.setItem('beerTastingPeople', JSON.stringify(vm.people));
+		localStorage.setItem('beerTastingBeers', JSON.stringify(vm.beers));
+	}
+	
+	vm.retrieve();
+}
+	
+function AddPersonController($scope) {
+	var vm = this;
+	vm.newPerson = {};
+	vm.addPerson = addPerson;
+	vm.removePerson = removePerson;
+
+	function addPerson() {
+		vm.newPerson.id = $scope.$parent.vm.people.length + 1;
+		$scope.$parent.vm.people.push(vm.newPerson);
+		vm.newPerson = {};
+		$scope.$parent.vm.save();
+		$scope.newPersonForm.$setPristine();
+	}
+
+	function removePerson(person) {
+		$scope.$parent.vm.people = $scope.$parent.vm.people.filter(function(a){ return a !== person; });
+		$scope.$parent.vm.save();
+	}
+	
+	//send session as json?
+}
+
+function RoundController($scope, $location) {
+	var vm = this;
+	vm.newBeer = {};
+	vm.scoreBeer = scoreBeer;
+	
+	
+	function scoreBeer() {
+		$scope.$parent.vm.beers.push(vm.newBeer);
+		$scope.$parent.vm.save();
+		$location.path('/scoreboard');
+	}
+}
+
+function ScoreboardController($scope) {
+	var vm = this;
+	vm.updateScoreboard = updateScoreboard;
+	vm.personId = '';
+	
+	function totalBeerScore(scores){
+		var total = 0;
+		if(!!vm.personId) {
+			total = !!scores[vm.personId] ? (scores[vm.personId] * 10) / 10 : 'N/A';
+		} else {
+			for(var score in scores) {
+				total += +((scores[score] * 10) / 10);
+			}
+		}
+		return total;
+	}
+	
+	function averageBeerScore(beer) {
+		var numScores = !!vm.personId ? 1 : Object.keys(beer.scores).length;
+		return +(beer.totalScore / numScores).toFixed(2);
+	}
+	
+	function updateScoreboard() {
+		vm.beers = $scope.$parent.vm.beers.map(function(beer){
+			beer.totalScore = totalBeerScore(beer.scores);
+			beer.averageScore = averageBeerScore(beer);
+			return beer;
+		});
+	}
+	updateScoreboard();
+}
+
+
+angular.module('tastingApp', [require('angular-route')])
+
+	.config(function($routeProvider, $locationProvider) {
+			$locationProvider.html5Mode({enabled: true});
+			$routeProvider.
+			  when('/', { 
+				templateUrl: 'partials/addPerson.html',
+				controller: 'AddPersonController',
+				controllerAs: 'vm'}).
+			  when('/round', { 
+				templateUrl: 'partials/round.html',
+				controller: 'RoundController',
+				controllerAs: 'vm'}).
+			  when('/scoreboard', { 
+				templateUrl: 'partials/scoreboard.html',
+				controller: 'ScoreboardController',
+				controllerAs: 'vm'}).
+			  otherwise( { redirectTo: '/' });
+		})
+	.controller('MainController', MainController)
+	.controller('AddPersonController', ['$scope', AddPersonController])
+	.controller('RoundController', ['$scope', '$location', RoundController])
+	.controller('ScoreboardController', ['$scope', ScoreboardController]);
+
+
+},{"angular":4,"angular-route":2}]},{},[5]);

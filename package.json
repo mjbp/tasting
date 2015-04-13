@@ -6,7 +6,7 @@
   "author": "mjbp",
   "license": "ISC",
   "scripts": {
-    "watch": "watchify js/main.js -o js/app.js"
+    "watch": "watchify src/js/app.js -o build/js/app.js"
   },
   "devDependencies": {
     "angular": "^1.3.15",

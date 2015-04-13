@@ -76,7 +76,7 @@ function ScoreboardController($scope) {
 			total = !!scores[vm.personId] ? (scores[vm.personId] * 10) / 10 : 'N/A';
 		} else {
 			for(var score in scores) {
-				total += (scores[score] * 10) / 10;
+				total += +((scores[score] * 10) / 10);
 			}
 		}
 		return total;

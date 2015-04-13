@@ -1,23 +1,25 @@
-<main>
+<main class="row">
 	<h1>Scoreboard</h1>
 	<form>
 		<div class="form-row form-row-select">
 			<label for="person-filter">Filter by taster:</label>
 			<select ng-model="vm.personId" ng-change="vm.updateScoreboard()">
 				<option value="">Everyone</option>
-				<option name="person-filter" ng-repeat="person in $parent.vm.people" value="{{person.id}}">{{person.name}}</option>
+				<option name="person-filter" ng-repeat="person in $parent.vm.people track by $index" value="{{person.id}}">{{person.name}}</option>
 			</select>
 		</div>
 	</form>
 	<table>
 		<thead>
+			<th>Position</th>
 			<th>Beer</th>
 			<th>Description</th>
 			<th>Score</th>
 			<th ng-hide="vm.personId">Average</th>
 		</thead>
 		<tbody>
-			<tr ng-repeat="beer in vm.beers track by $index | orderBy: '-averageScore'">
+			<tr ng-repeat="beer in vm.beers | orderBy:'-averageScore' track by $index">
+				<td>{{$index + 1}}</td>
 				<td>{{beer.name}}</td>
 				<td>{{beer.description}}</td>
 				<td>{{beer.totalScore}}</td>
@@ -25,5 +27,5 @@
 			</tr>
 		</tbody>
 	</table>
-	<div class="next-step"><a href="/round" class="button" ng-show="$parent.vm.people.length !== 0">Let's have a beer &rarr;</a></div>
+	<div><a href="/round" class="button button-next" ng-show="$parent.vm.people.length !== 0">Let's have a beer &rarr;</a></div>
 </main>

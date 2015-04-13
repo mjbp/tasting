@@ -1,0 +1,7 @@
+/* Header
+-------------------------------------------------------------- */
+.banner {display:flex;flex-direction: row;align-items: baseline;position:fixed;top:0;left:0;background:$primary-color;box-shadow: 0 2px 6px rgba(0,0,0,0.2);z-index:2;overflow:hidden;
+	& > h1 {font:400 1.5rem 'Oswald', sans-serif;color:#fff;flex-grow:1;display:flex;align-items: center;
+		& > img {margin-right:15px}
+	}
+}

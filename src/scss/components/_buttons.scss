@@ -1,0 +1,11 @@
+/* Buttons
+-------------------------------------------------------------- */
+button {border:0 none;cursor:pointer;background:transparent}
+
+.button {cursor:pointer;border:0 none;line-height: 1em; text-decoration: none;border-radius: 2px;display: inline-block;width: auto;background:$primary-color;color: #fff;padding: 8px 24px;font-size: 1rem;box-shadow: none;transition: box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);font: .85rem $body-font-family;float:right;
+	&:hover {
+	  box-shadow: 0 1px 3px rgba(0, 0, 0, .30);
+	}
+}
+
+.button-next {margin-top:4rem}

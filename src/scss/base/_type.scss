@@ -1,0 +1,7 @@
+/* Type
+-------------------------------------------------------------- */
+body,
+button,
+input {font:300 $base-font-size $body-font-family, sans-serif;line-height:$base-line-height;color:$body-font-color;}
+
+main h1 {font:$regular 1rem $header-font-family;margin:0 $gutter-h 1rem $gutter-h;color:$body-font-color}
