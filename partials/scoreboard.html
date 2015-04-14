@@ -1,0 +1,31 @@
+<main class="main">
+	<h1>Scoreboard</h1>
+	<form>
+		<div class="form-row form-row-select">
+			<label for="person-filter">Filter by taster:</label>
+			<select ng-model="vm.personId" ng-change="vm.updateScoreboard()">
+				<option value="">Everyone</option>
+				<option name="person-filter" ng-repeat="person in $parent.vm.people track by $index" value="{{person.id}}">{{person.name}}</option>
+			</select>
+		</div>
+	</form>
+	<table>
+		<thead>
+			<th class="cell-number">Rank</th>
+			<th>Beer</th>
+			<th>Description</th>
+			<th class="cell-number">Score</th>
+			<th class="cell-number" ng-hide="vm.personId">Average</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="beer in vm.beers | orderBy:'-averageScore' track by $index">
+				<td class="cell-number">{{$index + 1}}</td>
+				<td>{{beer.name}}</td>
+				<td>{{beer.description}}</td>
+				<td class="cell-number">{{beer.totalScore}}</td>
+				<td class="cell-number" ng-if="vm.personId === ''">{{beer.averageScore}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="next"><a href="#/round" class="button button-next" ng-show="$parent.vm.people.length !== 0">Let's have a beer &rarr;</a></div>
+</main>
