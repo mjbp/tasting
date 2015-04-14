@@ -74,10 +74,6 @@ gulp.task('watch', function () {
   	gulp.watch(srcFiles.css + '**/*.scss', ['css', 'compress:css']);
 });
 
-var deployOptions = {
-    cacheDir: 'build'
-};
-
 gulp.task('deploy', function () {
     return gulp.src('build/**/*')
         .pipe(ghPages(deployOptions));
