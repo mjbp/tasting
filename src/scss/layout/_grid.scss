@@ -1,5 +1,11 @@
 /* Grid
 -------------------------------------------------------------- */
+html, 
+body{height: 100%;}
+
+.container {position:relative;min-height:100%;}
+
 .row {width:100%;padding:.75rem $gutter-h}
 
-main {margin:6rem 0 4rem 0}
+.main {padding-top:6rem;padding-bottom:6rem}
+.next {padding-top:4rem;padding-right: $gutter-h}

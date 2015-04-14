@@ -100,8 +100,7 @@ function ScoreboardController($scope) {
 
 angular.module('tastingApp', [require('angular-route')])
 
-	.config(function($routeProvider, $locationProvider) {
-			$locationProvider.html5Mode({enabled: true});
+	.config(function($routeProvider) {
 			$routeProvider.
 			  when('/', { 
 				templateUrl: 'partials/addPerson.html',

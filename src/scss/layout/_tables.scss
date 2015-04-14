@@ -1,14 +1,9 @@
 /* Tables
 -------------------------------------------------------------- */
-table {margin:1rem 0 2rem 0;width:100%;border-collapse: collapse}
+table {margin:1rem 0 2rem 0;width:100%;border-collapse: collapse;border-spacing: 0;}
 th {font:400 1rem 'Oswald', sans-serif;}
 th,
-td {padding-left:.5rem;padding-right:.5rem;vertical-align:top}
-th:first-child,
-td:first-child {padding-left:4%}
-th:last-child,
-td:last-child {padding-right:4%;text-align: right}
-td:last-child {text-align: center}
+td {padding-left:.5rem;vertical-align:top;line-height:1.2rem}
 th {padding-bottom:.5rem;text-align: left;}
 td {padding-top:1rem;padding-bottom:1rem;border-top:1px solid #eee;text-align: left}
-tr:nth-child(even) td {}
+.cell-number {text-align:center}

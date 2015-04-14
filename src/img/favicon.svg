@@ -12,7 +12,7 @@
    id="svg2985"
    version="1.1"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="favion.svg">
+   sodipodi:docname="favicon.svg">
   <metadata
      id="metadata2997">
     <rdf:RDF>
@@ -21,7 +21,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -40,8 +40,8 @@
      inkscape:window-height="756"
      id="namedview2993"
      showgrid="false"
-     inkscape:zoom="2"
-     inkscape:cx="-46.383352"
+     inkscape:zoom="4"
+     inkscape:cx="-30.633352"
      inkscape:cy="-36.590394"
      inkscape:window-x="0"
      inkscape:window-y="0"
@@ -58,7 +58,7 @@
      transform="translate(-0.66827583,-14.945721)"
      style="display:inline">
     <rect
-       style="fill:#ffa000;fill-opacity:1"
+       style="fill:#5d4037;fill-opacity:1"
        id="rect3013"
        width="16"
        height="16"
