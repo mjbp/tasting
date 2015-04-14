@@ -146,9 +146,9 @@ html, body {
   color: #fff;
   text-transform: uppercase;
   text-decoration: none; }
-  .nav a:first-child {
-    margin-right: 20px;
-    margin-right: 1.25rem; }
+  .nav a:nth-child(n+2) {
+    margin-left: 20px;
+    margin-left: 1.25rem; }
 
 .nav-primary a {
   margin-top: 16px;

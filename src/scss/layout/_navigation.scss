@@ -1,6 +1,6 @@
 /* Navigation
 -------------------------------------------------------------- */
 .nav a {display: inline-flex;font:.85rem 'Roboto Condensed', sans-serif;color:#fff;text-transform:uppercase;text-decoration:none;
-	&:first-child {margin-right:1.25rem}
+	&:nth-child(n+2) {margin-left:1.25rem}
 }
 .nav-primary a {margin-top: 1rem;}
