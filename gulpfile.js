@@ -75,7 +75,7 @@ gulp.task('watch', function () {
 });
 
 var deployOptions = {
-    cacheDir: 'demo'
+    cacheDir: 'build'
 };
 
 gulp.task('deploy', function () {
