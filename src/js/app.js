@@ -1,5 +1,6 @@
 /*global require, localStorage*/
 var angular = require('angular');
+var angularRoute = require('angular-route');
 
 //Controllers
 function MainController() {
@@ -98,9 +99,9 @@ function ScoreboardController($scope) {
 }
 
 
-angular.module('tastingApp', [require('angular-route')])
+angular.module('tastingApp', ['ngRoute'])
 
-	.config(function($routeProvider) {
+	.config(['$routeProvider', function($routeProvider) {
 			$routeProvider.
 			  when('/', { 
 				templateUrl: 'partials/addPerson.html',
@@ -115,8 +116,8 @@ angular.module('tastingApp', [require('angular-route')])
 				controller: 'ScoreboardController',
 				controllerAs: 'vm'}).
 			  otherwise( { redirectTo: '/' });
-		})
-	.controller('MainController', MainController)
+		}])
+	.controller('MainController', [MainController])
 	.controller('AddPersonController', ['$scope', AddPersonController])
 	.controller('RoundController', ['$scope', '$location', RoundController])
 	.controller('ScoreboardController', ['$scope', ScoreboardController]);

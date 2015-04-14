@@ -1,28 +1,27 @@
 <!doctype html>
 <html lang="en" ng-app="tastingApp">
 <head>
-	<base href="/">
 	<title>Beer tasting</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimal-ui">
 	<link href='http://fonts.googleapis.com/css?family=Oswald|Roboto+Condensed:300' rel='stylesheet'>
-	<link href="css/styles.min.css" rel="stylesheet">
-	<script src="js/app.js"></script>
+	<link href="/css/styles.min.css" rel="stylesheet">
+	<script src="/js/app.min.js"></script>
 </head>
 <body ng-controller="MainController as vm">
 	<div class="container">
 		<header role="banner" class="row bubbles banner">
 			<h1 class="bubbles-2"><img src="img/icons/tasting.svg" alt="Schooners"> Beer Tasting</h1>
 			<nav class="nav nav-primary">
-				<a href="#/round" ng-hide="!vm.people.length">Next beer</a>
-				<a href="#/scoreboard" ng-hide="!vm.people.length || !vm.beers.length">Scoreboard</a>
+				<a href="/#/round" ng-hide="!vm.people.length">Next beer</a>
+				<a href="/#/scoreboard" ng-hide="!vm.people.length || !vm.beers.length">Scoreboard</a>
 			</nav>
 		</header>
 		<ng-view></ng-view>
 	</div>
 	<footer role="contentinfo" class="row contentinfo">
 		<nav class="nav">
-			<a href="#/" ng-click="vm.newSession()" ng-if="vm.people.length">Restart</a>
-			<a href="#/" ng-hide="!vm.people.length">Add taster</a>
+			<a href="/#/" ng-click="vm.newSession()" ng-if="vm.people.length">Restart</a>
+			<a href="/#/" ng-hide="!vm.people.length">Add taster</a>
 		</nav>
 	</footer>
 </body>
