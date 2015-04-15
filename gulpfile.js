@@ -87,7 +87,6 @@ gulp.task('watch', function () {
 gulp.task('default', ['webserver', 'css', 'js', 'compress', 'watch']);
 
 
-
 gulp.task('deploy', function () {
     return gulp.src('build/**/*')
         .pipe(ghPages());
