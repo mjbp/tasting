@@ -1,13 +1,16 @@
-var gulp = require('gulp');
-var del = require('del');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var pixrem = require('gulp-pixrem');
-var browserify = require('gulp-browserify');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var csso = require('gulp-csso');
-var ghPages = require('gulp-gh-pages');
+var gulp = require('gulp'),
+	del = require('del'),
+	sass = require('gulp-sass'),
+	autoprefixer = require('gulp-autoprefixer'),
+	pixrem = require('gulp-pixrem'),
+	browserify = require('gulp-browserify'),
+	uglify = require('gulp-uglify'),
+	rename = require('gulp-rename'),
+	csso = require('gulp-csso'),
+	ghPages = require('gulp-gh-pages'),
+	connect = require('gulp-connect');
+ 
+
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 9',
@@ -55,24 +58,35 @@ gulp.task('compress:js', function() {
 	gulp.src(dest.js + 'app.js')
 		.pipe(uglify())
 		.pipe(rename('app.min.js'))
-		.pipe(gulp.dest(dest.js));
+		.pipe(gulp.dest(dest.js))
+		.pipe(connect.reload());
 });
 
 gulp.task('compress:css', function() {
 	gulp.src(dest.css + 'styles.css')
 		.pipe(csso())
         .pipe(rename('styles.min.css'))
-		.pipe(gulp.dest(dest.css));
+		.pipe(gulp.dest(dest.css))
+		.pipe(connect.reload());
 });
+
 gulp.task('compress', ['compress:css', 'compress:js']);
 
-// Build Production Files, the Default Task
-gulp.task('default', ['css', 'js', 'compress']);
+gulp.task('webserver', function() {
+  connect.server({
+    livereload: true,
+	root: 'build',
+  });
+});
 
 gulp.task('watch', function () {
     gulp.watch(srcFiles.js + '**/*.js', ['js', 'compress:js']);
   	gulp.watch(srcFiles.css + '**/*.scss', ['css', 'compress:css']);
 });
+
+gulp.task('default', ['webserver', 'css', 'js', 'compress', 'watch']);
+
+
 
 gulp.task('deploy', function () {
     return gulp.src('build/**/*')
